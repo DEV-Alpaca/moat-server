@@ -20,5 +20,11 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
+# copy entrypoint.sh
+COPY ./entrypoint.sh /app
+
 # copy project
 COPY . /app/
+
+# run entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]
