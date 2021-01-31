@@ -14,9 +14,6 @@ RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev py3-psycopg2
 
 # install dependencies
 RUN pip install --upgrade pip
-#RUN pip install pipenv
-#COPY Pipfile* /
-#RUN cd /app && pipenv lock --keep-outdated --requirements > requirements.txt
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
