@@ -6,6 +6,7 @@
 FROM python:3.8.3-alpine as builder
 
 # set work directory
+RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 
 # set environment variables
@@ -14,13 +15,13 @@ ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+    && apk add postgresql-dev gcc python3-dev musl-dev py3-psycopg2
 
 # lint
 RUN pip install --upgrade pip
 RUN pip install flake8
 COPY . .
-RUN flake8 --ignore=E501,F401 .
+RUN flake8 --ignore=E501,F401,F405,F403 .
 
 # install dependencies
 COPY ./requirements.txt .
