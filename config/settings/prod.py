@@ -1,7 +1,10 @@
 from .base import *  # noqa
 
-env.read_env(os.path.join(BASE_DIR, "moat-server/env.prod"))
+DEBUG = env.bool("DEBUG", False)
+env.read_env(os.path.join(BASE_DIR, ".prod.env"))
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
 
+# Database ------------------------------------------------------------------------
 DATABASES = {
     "default": {
         "ENGINE": env("SQL_ENGINE"),
