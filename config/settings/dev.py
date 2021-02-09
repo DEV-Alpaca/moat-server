@@ -5,7 +5,7 @@ from .base import *  # noqa
 DEBUG = True
 
 env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, ".dev.env"))
+environ.Env.read_env(os.path.join(BASE_DIR, "envs/.dev.env"))
 
 # https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
