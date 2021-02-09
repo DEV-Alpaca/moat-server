@@ -28,6 +28,11 @@ class Club(CoreModel):
 
     photo_number.short_description = "Photo Count"
 
+    def fav_count(self):
+        return self.favs.count()
+
+    fav_count.short_description = "Number of users who like this Club"
+
     class Meta:
         ordering = ["-pk"]
 
