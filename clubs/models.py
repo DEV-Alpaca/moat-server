@@ -17,7 +17,7 @@ class Club(CoreModel):
     address = models.CharField(max_length=140)
     club_type = models.CharField(choices=CLUB_TYPE_CHOICES, max_length=2)
     user = models.ForeignKey(
-        "users.User", on_delete=models.CASCADE, related_name="rooms"
+        "users.User", on_delete=models.CASCADE, related_name="clubs"
     )
 
     def __str__(self):
