@@ -7,18 +7,13 @@ class Club(CoreModel):
 
     """ Club Model Definition """
 
-    CLUB_SMALL_GROUP = "SG"
-    CLUB_TALENT_SHARE = "TS"
-
-    CLUB_TYPE_CHOICES = ((CLUB_SMALL_GROUP, "소모임"), (CLUB_TALENT_SHARE, "재능공유"))
-
     name = models.CharField(max_length=140)
     description = models.TextField()
     address = models.CharField(max_length=140)
-    club_type = models.CharField(choices=CLUB_TYPE_CHOICES, max_length=2)
     user = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="clubs"
     )
+    club_type = models.ForeignKey("ClubType", on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
@@ -47,3 +42,25 @@ class Photo(CoreModel):
 
     def __str__(self):
         return self.club.name
+
+
+class AbstractItem(CoreModel):
+
+    """ Abstract Item """
+
+    name = models.CharField(max_length=80)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return self.name
+
+
+class ClubType(AbstractItem):
+
+    """ ClubType Model Definition """
+
+    class Meta:
+        verbose_name = "Club Type"
+        ordering = ["created"]
