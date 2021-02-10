@@ -19,7 +19,7 @@ services:
       - db
     entrypoint:
       - sh
-      - /app/entrypoint.sh
+      - /app/docker/entrypoint.sh
 
   db:
     container_name: postgres
