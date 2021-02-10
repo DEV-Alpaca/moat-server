@@ -9,11 +9,16 @@ class Club(CoreModel):
 
     name = models.CharField(max_length=140)
     description = models.TextField()
-    address = models.CharField(max_length=140)
+    d_date = models.CharField(max_length=20)
     user = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="clubs"
     )
-    club_type = models.ForeignKey("ClubType", on_delete=models.SET_NULL, null=True)
+    club_type = models.ForeignKey(
+        "ClubType", on_delete=models.SET_NULL, null=True, related_name="clubs"
+    )
+    location = models.ForeignKey(
+        "Location", on_delete=models.SET_NULL, null=True, related_name="clubs"
+    )
 
     def __str__(self):
         return self.name
@@ -63,4 +68,39 @@ class ClubType(AbstractItem):
 
     class Meta:
         verbose_name = "Club Type"
-        ordering = ["created"]
+        ordering = ["name"]
+
+
+class Address(CoreModel):
+
+    """ Address Model Definition """
+
+    address = models.CharField(max_length=80)
+    area = models.ForeignKey(
+        "Area", on_delete=models.SET_NULL, null=True, related_name="locations"
+    )
+    town = models.ForeignKey(
+        "Town", on_delete=models.SET_NULL, null=True, related_name="locations"
+    )
+
+    class Meta:
+        verbose_name = "Address"
+        ordering = ["town"]
+
+
+class Town(AbstractItem):
+
+    """ Town Model Definition """
+
+    class Meta:
+        verbose_name = "Town"
+        ordering = ["name"]
+
+
+class Area(AbstractItem):
+
+    """ Area Model Definition """
+
+    class Meta:
+        verbose_name = "Area"
+        ordering = ["name"]
