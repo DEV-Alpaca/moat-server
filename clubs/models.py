@@ -16,8 +16,8 @@ class Club(CoreModel):
     club_type = models.ForeignKey(
         "ClubType", on_delete=models.SET_NULL, null=True, related_name="clubs"
     )
-    location = models.ForeignKey(
-        "Location", on_delete=models.SET_NULL, null=True, related_name="clubs"
+    address = models.ForeignKey(
+        "Address", on_delete=models.SET_NULL, null=True, related_name="clubs"
     )
 
     def __str__(self):
