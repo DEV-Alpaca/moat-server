@@ -16,6 +16,13 @@ Moat-API를 Docker & Github Action으로 배포
 
 ### User API Actions
 
+- [ ] 전화번호 인증
+- [ ] 전화번호 로그인
+- [ ] SMS sending feature upon successful registration
+
+
+
+---
 - [ ] Mobile Number
 - [ ] Single field for full name
 - [ ] REST API to register
