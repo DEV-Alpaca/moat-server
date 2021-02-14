@@ -6,7 +6,7 @@
 FROM python:3.8.3-alpine as builder
 
 # set work directory
-RUN mkdir /usr/src/app
+#RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 
 # set environment variables
@@ -15,7 +15,9 @@ ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev py3-psycopg2
+    && apk add postgresql-dev gcc python3-dev musl-dev \
+    # install Pillow dependencies
+    && apk add jpeg-dev zlib-dev libjpeg
 
 # lint
 RUN pip install --upgrade pip
@@ -48,6 +50,11 @@ RUN mkdir $APP_HOME
 RUN mkdir $APP_HOME/static
 RUN mkdir $APP_HOME/media
 WORKDIR $APP_HOME
+
+# install Pillow dependencies
+RUN apk update \
+    && apk add --no-cache jpeg-dev zlib-dev \
+    && apk add --no-cache --virtual .build-deps build-base linux-headers
 
 # install dependencies
 RUN apk update && apk add libpq
