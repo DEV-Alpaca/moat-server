@@ -7,5 +7,9 @@ django-environ==0.4.5
 # For the persistence stores
 psycopg2-binary==2.8.6
 
+# Rest apis
+djangorestframework==3.12.2
+Pillow==8.1.0
+
 # Developer Tools
 flake8==3.8.4
