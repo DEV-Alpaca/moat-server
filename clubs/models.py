@@ -10,7 +10,8 @@ class Club(CoreModel):
     name = models.CharField(max_length=140)
     description = models.TextField()
     d_date = models.CharField(max_length=20)
-    user = models.ForeignKey(
+    cost = models.IntegerField()
+    host = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="clubs"
     )
     club_type = models.ForeignKey(
@@ -23,15 +24,20 @@ class Club(CoreModel):
     def __str__(self):
         return self.name
 
-    def photo_number(self):
+    def photo_count(self):
         return self.photos.count()
 
-    photo_number.short_description = "Photo Count"
+    photo_count.short_description = "Photo Count"
 
     def fav_count(self):
-        return self.favs.count()
+        return self.fav_users.count()
 
-    fav_count.short_description = "Number of users who like this Club"
+    fav_count.short_description = "Fav Users Count"
+
+    def applicant_count(self):
+        return self.applicants.count()
+
+    applicant_count.short_description = ""
 
     class Meta:
         ordering = ["-pk"]
@@ -71,11 +77,10 @@ class ClubType(AbstractItem):
         ordering = ["name"]
 
 
-class Address(CoreModel):
+class Address(AbstractItem):
 
     """ Address Model Definition """
 
-    address = models.CharField(max_length=80)
     area = models.ForeignKey(
         "Area", on_delete=models.SET_NULL, null=True, related_name="locations"
     )
