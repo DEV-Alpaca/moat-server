@@ -7,10 +7,23 @@ class Club(CoreModel):
 
     """ Club Model Definition """
 
+    STATUS_PENDING = "pending"
+    STATUS_IN_PROGRESS = "collecting"
+    STATUS_EXPIRED = "expired"
+
+    STATUS_CHOICES = (
+        (STATUS_PENDING, "pending"),
+        (STATUS_IN_PROGRESS, "collecting"),
+        (STATUS_EXPIRED, "expired"),
+    )
+
     name = models.CharField(max_length=140)
     description = models.TextField()
+    status = models.CharField(
+        max_length=12, choices=STATUS_CHOICES, default=STATUS_IN_PROGRESS
+    )
     d_date = models.CharField(max_length=20)
-    cost = models.IntegerField()
+    cost = models.PositiveIntegerField(default=0)
     host = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="clubs"
     )
@@ -29,15 +42,10 @@ class Club(CoreModel):
 
     photo_count.short_description = "Photo Count"
 
-    def fav_count(self):
-        return self.fav_users.count()
-
-    fav_count.short_description = "Fav Users Count"
-
     def applicant_count(self):
-        return self.applicants.count()
+        return self.reservations.count()
 
-    applicant_count.short_description = ""
+    applicant_count.short_description = "Applicant Count"
 
     class Meta:
         ordering = ["-pk"]

@@ -20,7 +20,6 @@ class ClubAdmin(admin.ModelAdmin):
         "name",
         "d_date",
         "host",
-        "fav_count",
         "applicant_count",
         "photo_count",
         "address",
