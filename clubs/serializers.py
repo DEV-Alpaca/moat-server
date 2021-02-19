@@ -5,42 +5,23 @@ from users.serializers import RelatedUserSerializer
 from .models import Club
 
 
-class ReadClubSerializer(serializers.ModelSerializer):
+class ClubSerializer(serializers.ModelSerializer):
 
     user = RelatedUserSerializer()
 
     class Meta:
         model = Club
         exclude = ("modified",)
-
-
-class WriteClubSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Club
-        exclude = (
-            "user",
-            "modified",
+        read_only_fields = (
+            "id",
+            "host",
             "created",
+            "updated",
         )
 
     # Field-level validation
-    def validate_beds(self, beds):
-        if beds < 5:
-            raise serializers.ValidationError("Your house is too small")
+    def validate_applicant(self, applicant_count):
+        if applicant_count > 4:
+            raise serializers.ValidationError("모집인원은 최대 4명입니다.")
         else:
-            return beds
-
-    # Object-level validation
-    def validate(self, data):
-        # update 할 때(instance 가 있을 때)
-        print("data: ", data)
-        if self.instance:
-            check_in = data.get("check_in", self.instance.check_in)
-            check_out = data.get("check_out", self.instance.check_out)
-        # create 할 때만(instance 가 없을 때)
-        else:
-            check_in = data.get("check_in")
-            check_out = data.get("check_out")
-        if check_in == check_out:
-            raise serializers.ValidationError("Not enough time between changes")
-        return data
+            return applicant_count

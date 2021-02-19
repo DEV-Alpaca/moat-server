@@ -3,22 +3,22 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Club
-from .serializers import ReadClubSerializer, WriteClubSerializer
+from .serializers import ClubSerializer
 
 
 class ClubsView(APIView):
     def get(self, request):
         clubs = Club.objects.all()[:5]
-        serializer = ReadClubSerializer(clubs, many=True).data
+        serializer = ClubSerializer(clubs, many=True).data
         return Response(serializer)
 
     def post(self, request):
         if not request.user.is_authenticated:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
-        serializer = WriteClubSerializer(data=request.data)
+        serializer = ClubSerializer(data=request.data)
         if serializer.is_valid():
             club = serializer.save(user=request.user)
-            club_serializer = ReadClubSerializer(club).data
+            club_serializer = ClubSerializer(club).data
             return Response(data=club_serializer, status=status.HTTP_200_OK)
         else:
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -35,7 +35,7 @@ class ClubView(APIView):
     def get(self, request, pk):
         club = self.get_club(pk)
         if club is not None:
-            serializer = ReadClubSerializer(club).data
+            serializer = ClubSerializer(club).data
             return Response(serializer)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -45,11 +45,11 @@ class ClubView(APIView):
         if club is not None:
             if club.user != request.user:
                 return Response(status=status.HTTP_403_FORBIDDEN)
-            serializer = WriteClubSerializer(club, data=request.data, partial=True)
+            serializer = ClubSerializer(club, data=request.data, partial=True)
             print(serializer.is_valid(), serializer.errors)
             if serializer.is_valid():
                 serializer.save()
-                return Response(ReadClubSerializer(club).data)
+                return Response(ClubSerializer(club).data)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
