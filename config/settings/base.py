@@ -36,6 +36,7 @@ PROJECT_APPS = [
     "core.apps.CoreConfig",
     "clubs.apps.ClubsConfig",
     "users.apps.UsersConfig",
+    "reservations.apps.ReservationsConfig",
 ]
 
 THIRD_PARTY_APPS = [
