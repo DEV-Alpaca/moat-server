@@ -1,4 +1,6 @@
 from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -6,11 +8,18 @@ from .models import Club
 from .serializers import ClubSerializer
 
 
+class OwnPagination(PageNumberPagination):
+    page_size = 5
+
+
 class ClubsView(APIView):
     def get(self, request):
-        clubs = Club.objects.all()[:5]
-        serializer = ClubSerializer(clubs, many=True).data
-        return Response(serializer)
+        paginator = OwnPagination()
+        clubs = Club.objects.all()
+        results = paginator.paginate_queryset(clubs, request)
+        # context 를 통해서 원하는 것(request 뿐만아니라 다른것도)을 serializer로 전달 할 수 있다.
+        serializer = ClubSerializer(results, many=True, context={"request": request})
+        return paginator.get_paginated_response(serializer.data)
 
     def post(self, request):
         if not request.user.is_authenticated:
