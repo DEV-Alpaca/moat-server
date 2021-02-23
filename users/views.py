@@ -8,6 +8,16 @@ from .models import User
 from .serializers import UserSerializer
 
 
+class UsersView(APIView):
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            new_user = serializer.save()
+            return Response(UserSerializer(new_user).data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class MeView(APIView):
 
     permission_classes = [IsAuthenticated]
