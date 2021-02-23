@@ -41,12 +41,28 @@ class PhotoAdmin(admin.ModelAdmin):
     get_thumbnail.short_description = "Thumbnail"
 
 
-@admin.register(models.ClubType, models.Address)
-class ItemAdmin(admin.ModelAdmin):
+@admin.register(models.ClubType)
+class ClubTypeAdmin(admin.ModelAdmin):
 
-    """ Item Admin Definition """
+    """ ClubType Admin Definition """
 
     list_display = ("name", "used_by")
 
     def used_by(self, obj):
         return obj.clubs.count()
+
+
+@admin.register(models.Address)
+class AddressAdmin(admin.ModelAdmin):
+
+    """ Address Admin Definition """
+
+    list_display = ("name", "town", "area")
+
+
+@admin.register(models.Town, models.Area)
+class AddressDetailAdmin(admin.ModelAdmin):
+
+    """AddressDetail Admin Definition """
+
+    list_display = ("name",)
