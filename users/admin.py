@@ -7,16 +7,21 @@ from . import models
 @admin.register(models.User)
 class UserAdmin(UserAdmin):
 
+    """ User Admin Definition """
+
     fieldsets = UserAdmin.fieldsets + (
         (
             "Custom Profile",
             {
                 "fields": (
-                    "avatar",
                     "superhost",
+                    "avatar",
+                    "birthday",
+                    "mobile",
+                    "gender",
                 )
             },
         ),
     )
 
-    list_display = UserAdmin.list_display
+    list_display = ("username", "mobile", "birthday", "gender", "superhost", "avatar")
