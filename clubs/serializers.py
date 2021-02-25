@@ -27,3 +27,7 @@ class ClubSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("모집인원은 최대 4명입니다.")
         else:
             return applicant_count
+
+    def create(self, validated_data):
+        club = Club.objects.create(**validated_data)
+        return club

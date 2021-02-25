@@ -16,11 +16,11 @@ Moat-API를 Docker & Github Action으로 배포
 
 ### Club API Actions
 
-- [ ] List Clubs
-- [ ] See Club
-- [ ] Create Clubs
-- [ ] Delete Club
-- [ ] Update Club
+- [x] List Clubs
+- [x] See Club
+- [x] Create Clubs
+- [x] Delete Club
+- [x] Update Club
 - [ ] Search Clubs
 
 ### User API Actions
@@ -29,7 +29,7 @@ Moat-API를 Docker & Github Action으로 배포
 - [ ] Change Password
 - [ ] Update Profile
 - [ ] Add Club to Favourites
-- [ ] Register
+- [ ] Register (Create User)
 - [ ] Login (JWT)
 - [ ] JWT Authentication
 - [ ] Login with Mobile Number
@@ -37,19 +37,18 @@ Moat-API를 Docker & Github Action으로 배포
 - [ ] SMS sending feature upon successful registration
 
 ### Reservation API Actions
-- [ ] List Reservations of the User
-- [ ]
+- [ ] Add Club to Reservations List of the User
 
 ### List API Actions
 - [ ]
 
 ### Review API Actions
+- [ ]
 
 ### Later... User API Actions
 - [ ] Mail sending feature upon successful registration
 - [ ] Social Auth Endpoints(Login using fb/google)
-- [ ] REST API to login with OTP (Same API endpoint as for OTP Verification; Set
-      `is_login: true` while sending JSON request)
+- [ ] REST API to login with OTP (Same API endpoint as for OTP Verification; Set `is_login: true` while sending JSON request)
 - [ ] Signal based mails
 - [ ] Generic Configuration based on settings.py
 - [ ] Mail based activation (optional alternative for OTP based activation)

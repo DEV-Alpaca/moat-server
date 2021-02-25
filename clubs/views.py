@@ -1,5 +1,4 @@
 from rest_framework import status
-from rest_framework.decorators import api_view
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -26,7 +25,7 @@ class ClubsView(APIView):
             return Response(status=status.HTTP_401_UNAUTHORIZED)
         serializer = ClubSerializer(data=request.data)
         if serializer.is_valid():
-            club = serializer.save(user=request.user)
+            club = serializer.save(host=request.user)
             club_serializer = ClubSerializer(club).data
             return Response(data=club_serializer, status=status.HTTP_200_OK)
         else:
@@ -52,7 +51,7 @@ class ClubView(APIView):
     def put(self, request, pk):
         club = self.get_club(pk)
         if club is not None:
-            if club.user != request.user:
+            if club.host != request.user:
                 return Response(status=status.HTTP_403_FORBIDDEN)
             serializer = ClubSerializer(club, data=request.data, partial=True)
             print(serializer.is_valid(), serializer.errors)
@@ -67,7 +66,7 @@ class ClubView(APIView):
     def delete(self, request, pk):
         club = self.get_club(pk)
         if club is not None:
-            if club.user != request.user:
+            if club.host != request.user:
                 return Response(status=status.HTTP_403_FORBIDDEN)
             club.delete()
             return Response(status=status.HTTP_200_OK)
