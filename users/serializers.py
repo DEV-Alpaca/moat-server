@@ -4,12 +4,13 @@ from .models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    # password 를 serializer로 보여주는 것 방지
+    # password 를 serializer 로 보여주는 것 방지
     password = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
         fields = (
+            "id",
             "username",
             "avatar",
             "mobile",

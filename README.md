@@ -24,15 +24,15 @@ Moat-API를 Docker & Github Action으로 배포
 - [ ] Search Clubs
 
 ### User API Actions
-- [ ] Single field for full name
-- [ ] See Profile
+- [x] Single field for full name
+- [x] See Profile
 - [ ] Change Password
-- [ ] Update Profile
+- [x] Update Profile
 - [ ] Add Club to Favourites
-- [ ] Register (Create User)
-- [ ] Login (JWT)
+- [x] Register (Create User)
+- [x] Login (JWT)
 - [ ] JWT Authentication
-- [ ] Login with Mobile Number
+- [x] Login with Mobile Number
 - [ ] SMS sending Mobile Number Authentication
 - [ ] SMS sending feature upon successful registration
 
