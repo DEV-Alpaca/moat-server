@@ -7,24 +7,10 @@ class Club(CoreModel):
 
     """ Club Model Definition """
 
-    STATUS_PENDING = "pending"
-    STATUS_IN_PROGRESS = "collecting"
-    STATUS_EXPIRED = "expired"
-
-    STATUS_CHOICES = (
-        (STATUS_PENDING, "pending"),
-        (STATUS_IN_PROGRESS, "collecting"),
-        (STATUS_EXPIRED, "expired"),
-    )
-
     name = models.CharField(max_length=140)
     description = models.TextField()
-    status = models.CharField(
-        max_length=12, choices=STATUS_CHOICES, default=STATUS_IN_PROGRESS
-    )
     d_date = models.CharField(max_length=20)
-    cost = models.PositiveIntegerField(default=0)
-    host = models.ForeignKey(
+    user = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="clubs"
     )
     club_type = models.ForeignKey(
@@ -37,15 +23,15 @@ class Club(CoreModel):
     def __str__(self):
         return self.name
 
-    def photo_count(self):
+    def photo_number(self):
         return self.photos.count()
 
-    photo_count.short_description = "Photo Count"
+    photo_number.short_description = "Photo Count"
 
-    def applicant_count(self):
-        return self.reservations.count()
+    def fav_count(self):
+        return self.favs.count()
 
-    applicant_count.short_description = "Applicant Count"
+    fav_count.short_description = "Number of users who like this Club"
 
     class Meta:
         ordering = ["-pk"]
@@ -85,10 +71,11 @@ class ClubType(AbstractItem):
         ordering = ["name"]
 
 
-class Address(AbstractItem):
+class Address(CoreModel):
 
     """ Address Model Definition """
 
+    address = models.CharField(max_length=80)
     area = models.ForeignKey(
         "Area", on_delete=models.SET_NULL, null=True, related_name="locations"
     )

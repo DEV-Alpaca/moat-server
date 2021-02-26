@@ -12,50 +12,38 @@ Moat-API를 Docker & Github Action으로 배포
 - python 3.8
 - django 3.1
 
-# API Actions
-
-### Club API Actions
-
-- [x] List Clubs
-- [x] See Club
-- [x] Create Clubs
-- [x] Delete Club
-- [x] Update Club
-- [ ] Search Clubs
+## API Actions
 
 ### User API Actions
-- [x] Single field for full name
-- [x] See Profile
-- [x] Change Password
-- [x] Update Profile
-- [x] Register (Create User)
-- [x] Login (JWT)
-- [x] JWT Authentication
-- [x] Login with Mobile Number
-- [ ] SMS sending Mobile Number Authentication
+
+- [ ] 전화번호 인증
+- [ ] 전화번호 로그인
 - [ ] SMS sending feature upon successful registration
 
-### Reservation API Actions
-- [ ] Add Club to Reservations List of the User
 
-### List API Actions
-- [ ]
 
-### Review API Actions
-- [ ]
-
-### Later... User API Actions
-- [ ] Add Club to Favourites
+---
+- [ ] Mobile Number
+- [ ] Single field for full name
+- [ ] REST API to register
+- [ ] REST API to login
+- [ ] MultiModelBackend: User can login using either of mobile, email or
+      username
+- [ ] REST API to login with OTP (Same API endpoint as for OTP Verification; Set
+      `is_login: true` while sending JSON request)
+- [ ] OTP Verification for mobile and email
+- [ ] API to register / login with OTP (no pre-registration required)
+- [ ] API to set user's profile image
 - [ ] Mail sending feature upon successful registration
-- [ ] Social Auth Endpoints(Login using fb/google)
-- [ ] REST API to login with OTP (Same API endpoint as for OTP Verification; Set `is_login: true` while sending JSON request)
-- [ ] Signal based mails
+- [ ] SMS sending feature upon successful registration
+- [ ] Change Password
+- [ ] Update Profile
 - [ ] Generic Configuration based on settings.py
+- [ ] Signal based mails
 - [ ] Mail based activation (optional alternative for OTP based activation)
+- [ ] Social Auth Endpoints(Login using fb/google)
 
 # Reference
 
-git-hook / pre-commit.yaml 작성 : https://pre-commit.com/index.html
 도커 배포 : https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
 user 참고 : https://github.com/101Loop/drf-user
-django-environ docs : https://django-environ.readthedocs.io/en/latest/
