@@ -26,12 +26,11 @@ Moat-API를 Docker & Github Action으로 배포
 ### User API Actions
 - [x] Single field for full name
 - [x] See Profile
-- [ ] Change Password
+- [x] Change Password
 - [x] Update Profile
-- [ ] Add Club to Favourites
 - [x] Register (Create User)
 - [x] Login (JWT)
-- [ ] JWT Authentication
+- [x] JWT Authentication
 - [x] Login with Mobile Number
 - [ ] SMS sending Mobile Number Authentication
 - [ ] SMS sending feature upon successful registration
@@ -46,6 +45,7 @@ Moat-API를 Docker & Github Action으로 배포
 - [ ]
 
 ### Later... User API Actions
+- [ ] Add Club to Favourites
 - [ ] Mail sending feature upon successful registration
 - [ ] Social Auth Endpoints(Login using fb/google)
 - [ ] REST API to login with OTP (Same API endpoint as for OTP Verification; Set `is_login: true` while sending JSON request)
