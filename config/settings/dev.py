@@ -8,6 +8,9 @@ env.read_env(os.path.join(BASE_DIR, "envs/.dev.env"))
 
 # https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts
 ALLOWED_HOSTS += env.list("DJANGO_ALLOWED_HOSTS")
+THIRD_PARTY_APPS += [
+    "django_seed",
+]
 
 # Database ------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
