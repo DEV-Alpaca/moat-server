@@ -53,6 +53,16 @@ Moat-API를 Docker & Github Action으로 배포
 - [ ] Generic Configuration based on settings.py
 - [ ] Mail based activation (optional alternative for OTP based activation)
 
+# TEST
+### Commands for Making Test Instance
+- [x] Make `python manage.py seed_town` command
+- [x] Make `python manage.py seed_area` command
+- [x] Make `python manage.py seed_address` command
+- [x] Make `python manage.py seed_clubtype` command
+- [x] Make `python manage.py seed_user` command
+- [x] Make `python manage.py seed_club` command
+- [ ] Add func to add automatically `club_photos` in seed_club command
+
 # Reference
 
 git-hook / pre-commit.yaml 작성 : https://pre-commit.com/index.html
