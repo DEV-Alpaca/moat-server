@@ -100,6 +100,9 @@ class Address(AbstractItem):
         verbose_name = "Address"
         ordering = ["town"]
 
+    def __str__(self):
+        return f"{self.area} / {self.town} / {self.name}"
+
 
 class Town(AbstractItem):
 

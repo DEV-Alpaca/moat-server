@@ -16,6 +16,29 @@ class ClubAdmin(admin.ModelAdmin):
 
     inlines = (PhotoInline,)
 
+    fieldsets = (
+        (
+            "Basic Info",
+            {"fields": ("name", "description", "cost", "club_type")},
+        ),
+        (
+            "Times",
+            {"fields": ("d_date",)},
+        ),
+        (
+            "Status",
+            {"fields": ("status",)},
+        ),
+        (
+            "Address",
+            {"fields": ("address",)},
+        ),
+        (
+            "Last Details",
+            {"fields": ("host",)},
+        ),
+    )
+
     list_display = (
         "name",
         "d_date",
