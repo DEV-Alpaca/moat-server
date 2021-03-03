@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import User
+from .models import AuthSms, User
 from .serializers import UserSerializer
 
 
@@ -62,3 +62,18 @@ def login(request):
         return Response(data={"token": encoded_jwt})
     else:
         return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+
+class SMSCheckView(APIView):
+    def post(self, request):
+        try:
+            phone_number = request.data["phone_number"]
+            print(phone_number)
+            AuthSms.objects.update_or_create(phone_number=phone_number)
+
+            return Response({"message": "OK"})
+
+        except KeyError:
+            return Response(
+                {"message": "Bad Request"}, status=status.HTTP_400_BAD_REQUEST
+            )
