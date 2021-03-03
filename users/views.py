@@ -77,3 +77,16 @@ class SMSCheckView(APIView):
             return Response(
                 {"message": "Bad Request"}, status=status.HTTP_400_BAD_REQUEST
             )
+
+    def get(self, request):
+        try:
+            phone_number = request.query_params["phone_number"]
+            auth_number = request.query_params["auth_number"]
+            result = AuthSms.check_auth_number(phone_number, auth_number)
+
+            return Response({"message": "OK", "result": result})
+
+        except KeyError:
+            return Response(
+                {"message": "Bad Request"}, status=status.HTTP_400_BAD_REQUEST
+            )

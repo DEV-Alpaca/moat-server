@@ -91,3 +91,13 @@ class AuthSms(TimeStampedModel):
         string_hmac = hmac.new(secret_key, string, digestmod=hashlib.sha256).digest()
         string_base64 = base64.b64encode(string_hmac).decode("UTF-8")
         return string_base64
+
+    @classmethod
+    def check_auth_number(cls, p_num, c_num):
+        time_limit = timezone.now() - datetime.timedelta(minutes=5)
+        result = cls.objects.filter(
+            phone_number=p_num, auth_number=c_num, modified__gte=time_limit
+        )
+        if result:
+            return True
+        return False
