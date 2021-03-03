@@ -21,10 +21,10 @@ class User(AbstractUser):
     superhost = models.BooleanField(default=False)
     avatar = models.ImageField(upload_to="avatars", blank=True)
     birthday = models.DateField(blank=True, null=True)
-    mobile = models.CharField(verbose_name="휴대폰 번호", max_length=11, unique=True)
+    phone_number = models.CharField(verbose_name="휴대폰 번호", max_length=11, unique=True)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
 
-    USERNAME_FIELD = "mobile"  # 로그인 mobile 로
+    USERNAME_FIELD = "phone_number"  # 로그인 phone_number 로
     REQUIRED_FIELDS = ["username", "birthday", "gender"]
 
     def __str__(self):

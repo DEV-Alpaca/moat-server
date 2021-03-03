@@ -49,12 +49,12 @@ def user_detail(request, pk):
 
 @api_view(["POST"])
 def login(request):
-    mobile = request.data.get("mobile")
+    phone_number = request.data.get("phone_number")
     password = request.data.get("password")
 
-    if not mobile or not password:
+    if not phone_number or not password:
         return Response(status=status.HTTP_400_BAD_REQUEST)
-    user = authenticate(mobile=mobile, password=password)
+    user = authenticate(phone_number=phone_number, password=password)
     if user is not None:
         encoded_jwt = jwt.encode(
             {"pk": user.pk}, settings.SECRET_KEY, algorithm="HS256"
