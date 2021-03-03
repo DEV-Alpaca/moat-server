@@ -41,6 +41,7 @@ PROJECT_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    "requests",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
@@ -130,3 +131,9 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     ],
 }
+
+# Naver Cloud Platform
+SERVICE_ID = env("NAVER_SERVICE_ID")
+SMS_SEND_PHONE_NUMBER = env("NAVER_SMS_SEND_PHONE_NUMBER")
+SUB_ACCOUNT_ACCESS_KEY = env("NAVER_SUB_ACCOUNT_ACCESS_KEY")
+SMS_SERVICE_SECRET = env("NAVER_SMS_SERVICE_SECRET")

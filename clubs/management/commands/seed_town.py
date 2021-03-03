@@ -5,7 +5,7 @@ from clubs.models import Town
 Name = "Towns"
 
 
-# python manage.py seed_town --number 10
+# python manage.py seed_town
 class Command(BaseCommand):
 
     help = f"This command creates many {Name}"

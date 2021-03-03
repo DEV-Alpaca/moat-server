@@ -1,9 +1,9 @@
 from django.db import models
 
-from core.models import CoreModel
+from core.models import TimeStampedModel
 
 
-class Club(CoreModel):
+class Club(TimeStampedModel):
 
     """ Club Model Definition """
 
@@ -51,7 +51,7 @@ class Club(CoreModel):
         ordering = ["-pk"]
 
 
-class Photo(CoreModel):
+class Photo(TimeStampedModel):
 
     """ Photo Model Definition """
 
@@ -63,7 +63,7 @@ class Photo(CoreModel):
         return self.club.name
 
 
-class AbstractItem(CoreModel):
+class AbstractItem(TimeStampedModel):
 
     """ Abstract Item """
 

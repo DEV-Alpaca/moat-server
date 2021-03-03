@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
             "id",
             "username",
             "avatar",
-            "mobile",
+            "phone_number",
             "birthday",
             "gender",
             "superhost",

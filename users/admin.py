@@ -17,11 +17,18 @@ class UserAdmin(UserAdmin):
                     "superhost",
                     "avatar",
                     "birthday",
-                    "mobile",
+                    "phone_number",
                     "gender",
                 )
             },
         ),
     )
 
-    list_display = ("username", "mobile", "birthday", "gender", "superhost", "avatar")
+    list_display = (
+        "username",
+        "phone_number",
+        "birthday",
+        "gender",
+        "superhost",
+        "avatar",
+    )

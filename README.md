@@ -32,7 +32,7 @@ Moat-API를 Docker & Github Action으로 배포
 - [x] Login (JWT)
 - [x] JWT Authentication
 - [x] Login with Mobile Number
-- [ ] SMS sending Mobile Number Authentication
+- [x] SMS sending Mobile Number Authentication
 - [ ] SMS sending feature upon successful registration
 
 ### Reservation API Actions
@@ -65,7 +65,8 @@ Moat-API를 Docker & Github Action으로 배포
 
 # Reference
 
-git-hook / pre-commit.yaml 작성 : https://pre-commit.com/index.html
-도커 배포 : https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
-user 참고 : https://github.com/101Loop/drf-user
-django-environ docs : https://django-environ.readthedocs.io/en/latest/
+git-hook / pre-commit.yaml 작성 : https://pre-commit.com/index.html  \
+도커 배포 : https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/  \
+user 참고 : https://github.com/101Loop/drf-user  \
+django-environ docs : https://django-environ.readthedocs.io/en/latest/  \
+Naver SMS Authentication : https://yuda.dev/284
