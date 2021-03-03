@@ -5,7 +5,7 @@ from clubs.models import Area
 Name = "Areas"
 
 
-# python manage.py seed_area --number 10
+# python manage.py seed_area
 class Command(BaseCommand):
 
     help = f"This command creates many {Name}"
