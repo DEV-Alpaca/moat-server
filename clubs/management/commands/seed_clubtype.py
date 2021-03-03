@@ -5,7 +5,7 @@ from clubs.models import ClubType
 Name = "ClubTypes"
 
 
-# python manage.py seed_clubtype --number 10
+# python manage.py seed_clubtype
 class Command(BaseCommand):
 
     help = f"This command creates many {Name}"

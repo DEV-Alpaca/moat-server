@@ -2,10 +2,10 @@ from django.db import models
 from django.utils import timezone
 
 from clubs.models import Club
-from core.models import CoreModel
+from core.models import TimeStampedModel
 
 
-class Reservation(CoreModel):
+class Reservation(TimeStampedModel):
 
     """ Reservation Model Definition """
 
