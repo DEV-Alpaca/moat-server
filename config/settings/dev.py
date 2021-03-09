@@ -4,7 +4,7 @@ from .base import *  # noqa
 # False if not in os.environ
 DEBUG = env.bool("DEBUG", True)
 env = environ.Env()
-env.read_env(os.path.join(BASE_DIR, "envs/.dev.env"))
+env.read_env(os.path.join(BASE_DIR, "envs/.env.dev"))
 
 # https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts
 ALLOWED_HOSTS += env.list("DJANGO_ALLOWED_HOSTS")
