@@ -137,3 +137,7 @@ SERVICE_ID = env("NAVER_SERVICE_ID")
 SMS_SEND_PHONE_NUMBER = env("NAVER_SMS_SEND_PHONE_NUMBER")
 SUB_ACCOUNT_ACCESS_KEY = env("NAVER_SUB_ACCOUNT_ACCESS_KEY")
 SMS_SERVICE_SECRET = env("NAVER_SMS_SERVICE_SECRET")
+
+# run the Django app behind an HTTPS proxy
+# In this tuple, when X-Forwarded-Proto is set to https the request is secure.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
