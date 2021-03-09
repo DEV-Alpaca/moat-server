@@ -7,9 +7,9 @@ services:
     build:
       context: .
       dockerfile: prod.Dockerfile
+    image: <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com/django-ec2:web
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
     env_file:
-      - envs/.prod.env
       - envs/.env.prod
     volumes:
       - static_volume:/home/app/web/static
@@ -19,29 +19,41 @@ services:
     entrypoint:
       - sh
       - docker/entrypoint.prod.sh
-    depends_on:
-      - db
 
-  db:
-    container_name: postgres_moat
-    image: postgres:12.0-alpine
-    env_file:
-      - envs/.prod.db.env
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-
-  nginx:
-    container_name: nginx_moat
-    build: ./nginx
+  nginx-proxy:
+    container_name: nginx-proxy
+    build: nginx
+    image: <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com/django-ec2:nginx-proxy
+    restart: always
+    ports:
+      - 443:443
+      - 80:80
     volumes:
       - static_volume:/home/app/web/static
       - media_volume:/home/app/web/media
-    ports:
-      - 1337:80
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - /var/run/docker.sock:/tmp/docker.sock:ro
     depends_on:
       - web
+
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    env_file:
+      - envs/.env.staging.proxy-companion
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+    depends_on:
+      - nginx-proxy
 
 volumes:
   postgres_data:
   static_volume:
   media_volume:
+  certs:
+  html:
+  vhost:
