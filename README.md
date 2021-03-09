@@ -67,6 +67,7 @@ Moat-API를 Docker & Github Action으로 배포
 
 git-hook / pre-commit.yaml 작성 : https://pre-commit.com/index.html  \
 도커 배포 : https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/  \
+도커 nginx-proxy : https://testdriven.io/blog/django-lets-encrypt/  \
 user 참고 : https://github.com/101Loop/drf-user  \
 django-environ docs : https://django-environ.readthedocs.io/en/latest/  \
 Naver SMS Authentication : https://yuda.dev/284

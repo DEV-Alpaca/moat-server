@@ -1,3 +1,3 @@
-from .dev import *  # noqa
+# from .dev import *  # noqa
 
-# from .prod import *  # noqa
+from .prod import *  # noqa

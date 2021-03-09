@@ -7,14 +7,17 @@ services:
     build:
       context: .
       dockerfile: prod.Dockerfile
-    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8001
     env_file:
       - envs/.prod.env
     volumes:
       - static_volume:/home/app/web/static
       - media_volume:/home/app/web/media
     expose:
-      - 8000
+      - 8001
+    entrypoint:
+      - sh
+      - docker/entrypoint.prod.sh
     depends_on:
       - db
 
@@ -33,7 +36,7 @@ services:
       - static_volume:/home/app/web/static
       - media_volume:/home/app/web/media
     ports:
-      - 1337:80
+      - 1337:81
     depends_on:
       - web
 
