@@ -22,7 +22,7 @@ services:
 
   nginx-proxy:
     container_name: nginx-proxy
-    build: nginx
+    build: config/nginx
     image: <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com/django-ec2:nginx-proxy
     restart: always
     ports:

@@ -22,7 +22,7 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 # copy entrypoint.sh
-COPY docker/entrypoint.sh /app
+COPY config/docker/entrypoint.sh /app
 
 # copy project
 COPY . $APP
