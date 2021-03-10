@@ -1,6 +1,6 @@
 from django.db import models
 
-from core.models import TimeStampedModel
+from apps.core import TimeStampedModel
 
 
 class Club(TimeStampedModel):
@@ -25,7 +25,7 @@ class Club(TimeStampedModel):
     d_date = models.CharField(max_length=20)
     cost = models.PositiveIntegerField(default=0)
     host = models.ForeignKey(
-        "users.User", on_delete=models.CASCADE, related_name="clubs"
+        "apps.users.User", on_delete=models.CASCADE, related_name="clubs"
     )
     club_type = models.ForeignKey(
         "ClubType", on_delete=models.SET_NULL, null=True, related_name="clubs"

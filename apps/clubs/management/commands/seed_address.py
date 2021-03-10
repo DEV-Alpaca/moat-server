@@ -4,7 +4,7 @@ import random
 from django.core.management.base import BaseCommand
 from django_seed import Seed
 
-from clubs.models import Address, Area, Town
+from apps.clubs import Address, Area, Town
 
 os.system("python manage.py seed_area")
 os.system("python manage.py seed_town")

@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from clubs.models import Town
+from apps.clubs import Town
 
 Name = "Towns"
 

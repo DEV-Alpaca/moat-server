@@ -1,8 +1,6 @@
 from django.db import models
-from django.utils import timezone
 
-from clubs.models import Club
-from core.models import TimeStampedModel
+from apps.core import TimeStampedModel
 
 
 class Reservation(TimeStampedModel):
@@ -23,10 +21,10 @@ class Reservation(TimeStampedModel):
         max_length=12, choices=STATUS_CHOICES, default=STATUS_PENDING
     )
     guest = models.ForeignKey(
-        "users.User", related_name="reservations", on_delete=models.CASCADE
+        "apps.users.User", related_name="reservations", on_delete=models.CASCADE
     )
     club = models.ForeignKey(
-        "clubs.Club", related_name="reservations", on_delete=models.CASCADE
+        "apps.clubs.Club", related_name="reservations", on_delete=models.CASCADE
     )
 
     def __str__(self):

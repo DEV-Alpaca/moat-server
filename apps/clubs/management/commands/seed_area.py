@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from clubs.models import Area
+from apps.clubs import Area
 
 Name = "Areas"
 
