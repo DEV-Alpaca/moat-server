@@ -18,8 +18,8 @@ RUN apk update \
 
 # install dependencies
 RUN pip install --upgrade pip
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+COPY ./local.requirements.txt .
+RUN pip install -r local.requirements.txt
 
 # copy entrypoint.local.sh
 COPY config/docker/entrypoint.local.sh /app
