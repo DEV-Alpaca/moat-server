@@ -75,4 +75,4 @@ RUN chown -R app:app $APP_HOME
 USER app
 
 # run entrypoint.prod.sh
-ENTRYPOINT ["/home/app/web/docker/entrypoint.prod.sh"]
+ENTRYPOINT ["/home/app/web/config/docker/entrypoint.prod.sh"]

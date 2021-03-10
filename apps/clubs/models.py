@@ -25,7 +25,7 @@ class Club(TimeStampedModel):
     d_date = models.CharField(max_length=20)
     cost = models.PositiveIntegerField(default=0)
     host = models.ForeignKey(
-        "apps.users.User", on_delete=models.CASCADE, related_name="clubs"
+        "users.User", on_delete=models.CASCADE, related_name="clubs"
     )
     club_type = models.ForeignKey(
         "ClubType", on_delete=models.SET_NULL, null=True, related_name="clubs"

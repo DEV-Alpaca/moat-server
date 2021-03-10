@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.users import UserSerializer
+from apps.users.serializers import UserSerializer
 
 from .models import Club
 

@@ -2,7 +2,7 @@ import jwt
 from django.conf import settings
 from rest_framework import authentication, exceptions
 
-from apps.users import User
+from apps.users.models import User
 
 
 # https://www.django-rest-framework.org/api-guide/authentication/#custom-authentication

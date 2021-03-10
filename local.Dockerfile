@@ -28,4 +28,4 @@ COPY config/docker/entrypoint.local.sh /app
 COPY . $APP
 
 # run entrypoint.local.sh
-ENTRYPOINT ["/app/docker/entrypoint.local.sh"]
+ENTRYPOINT ["/app/config/docker/entrypoint.local.sh"]

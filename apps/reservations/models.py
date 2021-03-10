@@ -21,10 +21,10 @@ class Reservation(TimeStampedModel):
         max_length=12, choices=STATUS_CHOICES, default=STATUS_PENDING
     )
     guest = models.ForeignKey(
-        "apps.users.User", related_name="reservations", on_delete=models.CASCADE
+        "users.User", related_name="reservations", on_delete=models.CASCADE
     )
     club = models.ForeignKey(
-        "apps.clubs.Club", related_name="reservations", on_delete=models.CASCADE
+        "clubs.Club", related_name="reservations", on_delete=models.CASCADE
     )
 
     def __str__(self):
