@@ -26,8 +26,8 @@ COPY . .
 RUN flake8 --ignore=E501,F401,F405,F403 .
 
 # install dependencies
-COPY ./requirements.txt .
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+COPY prod.requirements.txt .
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r prod.requirements.txt
 
 
 #########
@@ -59,7 +59,7 @@ RUN apk update \
 # install dependencies
 RUN apk update && apk add libpq
 COPY --from=builder /usr/src/app/wheels /wheels
-COPY --from=builder /usr/src/app/requirements.txt .
+COPY --from=builder /usr/src/app/prod.requirements.txt .
 RUN pip install --no-cache /wheels/*
 
 # copy entrypoint-prod.sh
@@ -75,4 +75,4 @@ RUN chown -R app:app $APP_HOME
 USER app
 
 # run entrypoint.prod.sh
-ENTRYPOINT ["/home/app/web/docker/entrypoint.prod.sh"]
+ENTRYPOINT ["/home/app/web/config/docker/entrypoint.prod.sh"]
