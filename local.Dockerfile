@@ -21,11 +21,11 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-# copy entrypoint.sh
-COPY config/docker/entrypoint.sh /app
+# copy entrypoint.local.sh
+COPY config/docker/entrypoint.local.sh /app
 
 # copy project
 COPY . $APP
 
-# run entrypoint.sh
-ENTRYPOINT ["/app/docker/entrypoint.sh"]
+# run entrypoint.local.sh
+ENTRYPOINT ["/app/docker/entrypoint.local.sh"]
