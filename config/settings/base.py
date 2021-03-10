@@ -33,10 +33,10 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-    "core.apps.CoreConfig",
-    "clubs.apps.ClubsConfig",
-    "users.apps.UsersConfig",
-    "reservations.apps.ReservationsConfig",
+    "apps.core.apps.CoreConfig",
+    "apps.clubs.apps.ClubsConfig",
+    "apps.users.apps.UsersConfig",
+    "apps.reservations.apps.ReservationsConfig",
 ]
 
 THIRD_PARTY_APPS = [

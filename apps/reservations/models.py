@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.core import TimeStampedModel
+from apps.core.models import TimeStampedModel
 
 
 class Reservation(TimeStampedModel):
