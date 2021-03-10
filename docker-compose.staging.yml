@@ -18,7 +18,7 @@ services:
       - 8000
     entrypoint:
       - sh
-      - docker/entrypoint.prod.sh
+      - config/docker/entrypoint.prod.sh
 
   nginx-proxy:
     container_name: nginx-proxy
