@@ -63,6 +63,20 @@ Moat-API를 Docker & Github Action으로 배포
 - [x] Make `python manage.py seed_club` command
 - [ ] Add func to add automatically `club_photos` in seed_club command
 
+# Deploy
+1. Github Action 설정 확인 (.github/workflows/deploy.yml)
+2. Github Secrets에 필요한 값 설정
+    - DEPLOY_USERNAME:
+    - ENV: `.env` file 에 들어갈 key-value 값 전체
+    - ENV_PROD: `.env.prod` file 에 들어갈 key-value 값 전체
+    - ENV_PROXY: `.env.prod.proxy-companion` file 에 들어갈 key-value 값 전체
+    - HOST: 배포할 remote 서버 host
+    - USERNAME: 배포할 remote 서버의 username _ex) ubuntu_
+    - KEY: 배포할 remote 서버로 접근 가능한 ssh key 전문
+
+- 소스는 ec2 ubuntu 기준 /home/{DEPLOY_USERNAME}/srv/django-docker로 배포됩니다
+
+
 # Reference
 
 git-hook / pre-commit.yaml 작성 : https://pre-commit.com/index.html  \
@@ -70,4 +84,5 @@ git-hook / pre-commit.yaml 작성 : https://pre-commit.com/index.html  \
 도커 nginx-proxy : https://testdriven.io/blog/django-lets-encrypt/  \
 user 참고 : https://github.com/101Loop/drf-user  \
 django-environ docs : https://django-environ.readthedocs.io/en/latest/  \
-Naver SMS Authentication : https://yuda.dev/284
+Naver SMS Authentication : https://yuda.dev/284  \
+https://github.com/marketplace/actions/rsync-deployments-action \
