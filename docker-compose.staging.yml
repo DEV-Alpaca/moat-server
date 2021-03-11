@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: prod.Dockerfile
-    image: <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com/django-ec2:web
+    image: django-ec2:web
     command: gunicorn moat_server.wsgi:application --bind 0.0.0.0:8000
     env_file:
       - envs/.env.staging
@@ -23,7 +23,7 @@ services:
   nginx-proxy:
     container_name: nginx-proxy
     build: config/nginx
-    image: <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com/django-ec2:nginx-proxy
+    image: django-ec2:nginx-proxy
     restart: always
     ports:
       - 443:443
