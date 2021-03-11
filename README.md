@@ -86,3 +86,4 @@ user 참고 : https://github.com/101Loop/drf-user  \
 django-environ docs : https://django-environ.readthedocs.io/en/latest/  \
 Naver SMS Authentication : https://yuda.dev/284  \
 https://github.com/marketplace/actions/rsync-deployments-action \
+https://zzsza.github.io/development/2020/06/06/github-action/  \
